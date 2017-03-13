@@ -1,0 +1,153 @@
+###############################################################################
+## Distance Metrics expressed using the Function Ontology
+###############################################################################
+@prefix fno: <http://semweb.datasciencelab.be/ns/function#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix : <http://semweb.datasciencelab.be/ns/sfn#> .
+
+## Similarity Metric ##
+#######################
+
+:similarity a fno:Function ;
+	fno:name "Similarity Distance" ;
+	rdfs:comment "Similarity Distance" ;
+	rdfs:label "Similarity Distance" ;
+	dcterms:title "similarity distance" ;
+	dcterms:description "" ;
+	fno:expects ( :distanceMeasureParam :thresholdParam :weightParam ) ;
+	fno:returns ( :booleanOut ) .
+
+## Parameters ##
+
+:distanceMeasureParam a fno:Parameter ;
+  fno:name "distance measure" ;
+  rdfs:label "distance measure" ;
+  fno:type :DistanceMeasure ;
+  fno:required "true"^^xsd:boolean ;
+  fno:predicate :distanceMeasure .
+
+:thresholdParam a fno:Parameter ;
+  fno:name "threshold" ;
+  rdfs:label "threshold" ;
+  fno:type xsd:decimal ;
+  fno:required "true"^^xsd:boolean ;
+  fno:predicate :threshold .
+
+:weightParam a fno:Parameter ;
+  fno:name "weight" ;
+  rdfs:label "weight" ;
+  fno:type xsd:decimal ;
+  fno:required "false"^^xsd:boolean ;
+  fno:predicate :weight .
+  
+:booleanOut a fno:Output ;
+  fno:name "output boolean" ;
+  rdfs:label "output boolean" ;
+  fno:type xsd:boolean ;
+  fno:predicate :booleanOutput .
+
+## Distance Measures ##
+#######################
+
+## Levenshtein Distance ##
+
+:similarity a fno:Function ;
+	fno:name "Similarity Distance" ;
+	rdfs:comment "Similarity Distance" ;
+	rdfs:label "Similarity Distance" ;
+	dcterms:title "similarity distance" ;
+	dcterms:description "" ;
+	fno:expects ( :distanceMeasureParam :thresholdParam :weightParam ) ;
+	fno:returns ( :booleanOut ) .
+
+:Levenshtein a fno:Function, :DistanceMeasure ;
+	fno:name "Levenshtein Distance" ;
+	rdfs:comment "Levenshtein Distance" ;
+	rdfs:label "Levenshtein Distance" ;
+	dcterms:title "levenshtein" ;
+	dcterms:description "" ;
+	fno:expects ( :string1Param :string2Param ) ;
+	fno:returns ( :out ) .
+
+
+## Jaro Distance ##
+
+:Jaro a fno:Function, :DistanceMeasure ;
+	fno:name "Jaro Distance" ;
+	rdfs:comment "Jaro Distance" ;
+	rdfs:label "Jaro Distance" ;
+	dcterms:title "jaro" ;
+	dcterms:description "" ;
+	fno:expects ( :string1Param :string2Param ) ;
+	fno:returns ( :out ) .
+
+
+## Jaro-Winkler Distance ##
+
+:JaroWinkler a fno:Function, :DistanceMeasure ;
+	fno:name "Jaro Winkler Distance" ;
+	rdfs:comment "Jaro Winkler Distance" ;
+	rdfs:label "Jaro Winkler Distance" ;
+	dcterms:title "jaro-winkler" ;
+	dcterms:description "" ;
+	fno:expects ( :string1Param :string2Param ) ;
+	fno:returns ( :out ) .
+
+
+## Equality Distance ##
+
+:Equality a fno:Function, :DistanceMeasure ;
+	fno:name "Equality Distance" ;
+	rdfs:comment "Equality Distance" ;
+	rdfs:label "Equality Distance" ;
+	dcterms:title "equality" ;
+	dcterms:description "" ;
+	fno:expects ( :string1Param :string2Param ) ;
+	fno:returns ( :out ) .
+
+
+## Ratcliff Distance ##
+
+:Ratcliff a fno:Function, :DistanceMeasure ;
+	fno:name "Ratcliff Distance" ;
+	rdfs:comment "Ratcliff Distance" ;
+	rdfs:label "Ratcliff Distance" ;
+	dcterms:title "ratcliff" ;
+	dcterms:description "" ;
+	fno:expects ( :string1Param :string2Param ) ;
+	fno:returns ( :out ) .
+
+
+## Jaccard Distance ##
+
+:Jaccard a fno:Function, :DistanceMeasure ;
+	fno:name "Jaccard Distance" ;
+	rdfs:comment "Jaccard Distance" ;
+	rdfs:label "Jaccard Distance" ;
+	dcterms:title "jaccard" ;
+	dcterms:description "" ;
+	fno:expects ( :string1Param :string2Param ) ;
+	fno:returns ( :out ) .
+
+## Parameters ##
+
+:string1Param a fno:Parameter ;
+  fno:name "string 1 parameter" ;
+  rdfs:label "string 1 parameter" ;
+  fno:type xsd:string ;
+  fno:predicate :string1 .
+  
+:string2Param a fno:Parameter ;
+  fno:name "string 2 parameter" ;
+  rdfs:label "string 2 parameter" ;
+  fno:type xsd:string ;
+  fno:predicate :string2 .
+  
+:out a fno:Output ;
+  fno:name "output decimal" ;
+  rdfs:label "output decimal" ;
+  fno:type xsd:decimal ;
+  fno:predicate :output .
